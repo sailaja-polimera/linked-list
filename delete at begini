@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *link;
+};
+struct node* insertending(struct node *head)
+{
+    if(head==NULL)
+    {
+        printf("linked list is empty");
+        
+    }
+    else
+    {
+      struct node *temp=head;
+     head=head->link;
+    }
+  return head;
+}
+int main()
+{
+     
+    struct node *head=NULL;
+      struct node *p;
+    struct node *ptr=malloc(sizeof(struct node));
+    ptr->data=10;
+    ptr->link=NULL;
+    head=ptr;
+    
+    struct node *ptr1=malloc(sizeof(struct node));
+    ptr1->data=30;
+   
+     ptr->link=ptr1;
+     ptr1->link=NULL;
+     
+      struct node *ptr2=malloc(sizeof(struct node));
+      ptr2->data=50;
+   
+      ptr1->link=ptr2;
+      ptr2->link=NULL;
+      
+    // int data=40,pos=4;
+     head=insertending(head);
+     p=head;
+     while(p!=NULL)
+    {
+    printf("%d ",p->data);
+    p=p->link;
+}
+    return 0;
+}
