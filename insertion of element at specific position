@@ -15,6 +15,7 @@ struct node* insertending(struct node *head,int data,int pos)
    while(pos!=1)
     {
       temp=temp->link;
+      pos--;
     }
     newnode->link=temp->link;
     temp->link=newnode;
