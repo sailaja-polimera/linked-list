@@ -5,7 +5,7 @@ struct node
     int data;
     struct node *link;
 };
-struct node* insertending(struct node *head)
+struct node* delend(struct node *head)
 {
     if(head==NULL)
     {
@@ -59,7 +59,7 @@ int main()
       ptr2->link=ptr3;
     
     // int data=40,pos=4;
-     head=insertending(head);
+     head=delend(head);
      p=head;
      while(p!=NULL)
     {
