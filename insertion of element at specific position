@@ -5,7 +5,7 @@ struct node
     int data;
     struct node *link;
 };
-struct node* insertending(struct node *head,int data,int pos)
+struct node* insspe(struct node *head,int data,int pos)
 {
       struct node *temp=head;
      struct node *newnode= (struct node*) malloc(sizeof(struct node));
@@ -38,7 +38,7 @@ int main()
      ptr1->link=NULL;
      
     int data=40,pos=2;
-    head=insertending(head,data,pos);
+    head=insspe(head,data,pos);
     p=head;
    while(p!=NULL)
     {
