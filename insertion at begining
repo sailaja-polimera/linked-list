@@ -5,7 +5,7 @@ struct node
     int data;
     struct node *link;
 };
-struct node* insertending(struct node *head,int data)
+struct node* insbeg(struct node *head,int data)
 {
 
      struct node *temp= (struct node*) malloc(sizeof(struct node));
@@ -87,7 +87,7 @@ int main()
      ptr1->link=NULL;
 
     int data=40;
-    head=insertending(head,data);
+    head=insbeg(head,data);
     p=head;
    while(p!=NULL)
     {
