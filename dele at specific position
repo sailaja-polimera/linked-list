@@ -5,20 +5,20 @@ struct node
     int data;
     struct node *link;
 };
-struct node* delspe(struct node *head,int pos)
+struct node* delspe(struct node **head,int pos)
 {
-    struct node *cur=head;
-    struct node *pre=head;
-    if(head==NULL)
+    struct node *cur=*head;
+    struct node *pre=*head;
+    if(*head==NULL)
     {
         printf("linked list is empty");
         
     }
     else if(pos==1)
     {
-        head=cur->link;
-        free(head);
-        head=NULL;
+        *head=cur->link;
+        free(cur);
+        cur=NULL;
     }
     else
     {
@@ -35,7 +35,7 @@ struct node* delspe(struct node *head,int pos)
       cur=NULL;
     }
     
-  return head;
+  return *head;
 }
 int main()
 {
@@ -62,8 +62,8 @@ int main()
       ptr3->link=NULL;
       ptr2->link=ptr3;
     
-     int pos=2;
-     head=delspe(head,pos);
+     int pos=3;
+     head=delspe(&head,pos);
      p=head;
      while(p!=NULL)
     {
