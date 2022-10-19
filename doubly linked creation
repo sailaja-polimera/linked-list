@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *left;
+    struct node *right;
+};
+struct node *addnode(struct node *temp3,struct node *head,int data)
+{
+    
+      struct node *temp4=malloc(sizeof(struct node));
+    temp4->data=data;
+    temp4->left=temp3;
+    temp4->right=NULL;  
+    temp3->right=temp4;
+    return head;
+}
+int main()
+{
+     
+    struct node *head=NULL;
+    struct node *p;
+    struct node *temp=malloc(sizeof(struct node));
+    temp->data=10;
+    temp->right=NULL;
+    temp->left=NULL;
+    head=temp;
+    
+    struct node *temp1=malloc(sizeof(struct node));
+    temp1->data=20;
+    temp1->left=temp;
+     temp->right=temp1;
+    temp1->right=NULL;
+  
+    struct node *temp2=malloc(sizeof(struct node));
+    temp2->data=30;
+    temp2->left=temp1;
+     temp1->right=temp2;
+    temp2->right=NULL;
+          
+    struct node *temp3=malloc(sizeof(struct node));
+    temp3->data=40;
+    temp3->left=temp2;
+     temp2->right=temp3;
+    temp3->right=NULL;  
+    
+    int data=50; 
+    head=addnode(temp3,head,data);
+    p=head;
+     while(p!=NULL)
+    {
+    printf("%d ",p->data);
+    p=p->right;
+}
+    return 0;
+}
