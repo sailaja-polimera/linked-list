@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *left;
+    struct node *right;
+};
+struct node *addnode(struct node *head,int data,int i)
+{
+    struct node *pen=head;
+     struct node *temp=malloc(sizeof(struct node));
+   
+ if(i==1)
+    {
+    
+   
+    temp->left=NULL;
+    temp->right=NULL;  
+    temp->data=data;
+    head=temp;
+    return head;
+    }
+    else
+    {
+        while(pen->right!=NULL)
+        {
+            pen=pen->right;
+        }
+        pen->right=temp;
+         temp->data=data;
+           temp->right=NULL;  
+    temp->left=pen;
+}
+return head;
+}
+
+struct node *delete(struct node *head)
+{
+    struct node *ptr1=head;
+    head=head->right;
+     free(ptr1);
+     ptr1=NULL;
+     head->left=NULL;
+   
+     return head;
+}
+int main()
+{
+     
+    struct node *head=NULL;
+    struct node *p;
+   
+    
+    int n,data;
+    printf("eneter nodes and data");
+    scanf("%d",&n);
+    for(int i=1;i<=n;i++)
+    {
+        scanf("%d",&data);
+    head=addnode(head,data,i);
+    }
+   
+     head=delete(head);
+     
+    p=head;
+     while(p!=NULL)
+    {
+    printf("%d ",p->data);
+    p=p->right;
+}
+    return 0;
+}
