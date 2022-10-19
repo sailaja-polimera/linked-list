@@ -1,0 +1,105 @@
+#include <stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *left;
+    struct node *right;
+};
+struct node *addnode(struct node *head,int data,int i)
+{
+    struct node *pen=head;
+     struct node *temp=malloc(sizeof(struct node));
+   
+ if(i==1)
+    {
+    
+   
+    temp->left=NULL;
+    temp->right=NULL;  
+    temp->data=data;
+    head=temp;
+    return head;
+    }
+    else
+    {
+        while(pen->right!=NULL)
+        {
+            pen=pen->right;
+        }
+        pen->right=temp;
+         temp->data=data;
+           temp->right=NULL;  
+    temp->left=pen;
+}
+return head;
+}
+struct node *firstnode(struct node *head,int data)
+{
+    struct node *newnode=malloc(sizeof(struct node));
+    newnode->data=data;
+    newnode->left=NULL;
+    newnode->right=head;
+    head->left=newnode;
+    head=newnode;
+    return head;
+}
+struct node *lastnode(struct node *head,int data)
+{
+    struct node *ptr=head;
+    struct node *newnode=malloc(sizeof(struct node));
+    while(ptr->right!=NULL)
+    {
+        ptr=ptr->right;
+    }
+    newnode->data=data;
+    newnode->left=ptr;
+    newnode->right=NULL;
+    ptr->right=newnode;
+    return head;
+}
+struct node *middle(struct node *head,int data,int pos)
+{
+    struct node *ptr1=head;
+    struct node *ptr2=head;
+     struct node *newnode=malloc(sizeof(struct node));
+    pos--;
+    while(pos!=1)
+    {
+        ptr1=ptr1->right;
+        pos--;
+    }
+    ptr2=ptr1->right;
+    ptr2->left=newnode;
+    newnode->data=data;
+    newnode->right=ptr2;
+    newnode->left=ptr1;
+    ptr1->right=newnode;
+    return head;
+}
+int main()
+{
+     
+    struct node *head=NULL;
+    struct node *p;
+   
+    
+    int n,data;
+    printf("eneter nodes and data");
+    scanf("%d",&n);
+    for(int i=1;i<=n;i++)
+    {
+        scanf("%d",&data);
+    head=addnode(head,data,i);
+    }
+    head=firstnode(head,17);
+     head=lastnode(head,20);
+     head=middle(head,21,2);
+    p=head;
+     while(p!=NULL)
+    {
+    printf("%d ",p->data);
+    p=p->right;
+}
+    return 0;
+}
