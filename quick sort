@@ -1,0 +1,73 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+
+void Display(int arr[],int size);
+void QuickSort(int arr[],int start,int end);
+int partition(int arr[],int start,int end);
+void swap(int *x,int *y);
+
+
+
+int main()
+{
+    int ch,size,arr[20],start,end;
+
+        printf("Enter the size of an array:\n");
+        scanf("%d",&size);
+        printf("Enter elements to be sorted:\n");
+        for(int i=0;i<size;i++)
+        {
+            scanf("%d",&arr[i]);
+        }
+       start=0;
+      end=size-1;
+   QuickSort(arr,start,end);
+   Display(arr,size);
+}
+void Display(int arr[20],int size)
+{
+    printf("The sorted elements are:");
+    for(int l=0;l<size;l++)
+    {
+        printf("%d ",arr[l]);
+    }
+}
+
+void QuickSort(int arr[],int start,int end)
+{
+int pIndex;
+    if(start<end)
+    {
+        pIndex=partition(arr,start,end);
+        QuickSort(arr,start,pIndex-1);
+        QuickSort(arr,pIndex+1,end);
+    }
+}
+
+int partition(int arr[],int start,int end)
+{
+    int pIndex=start;
+    int pivot=arr[end];
+    int q,temp1;
+    for(q=start;q<end;q++)
+{
+        if(arr[q]<pivot)
+        {
+           swap(&arr[q],&arr[pIndex]);
+
+            pIndex++;
+        }
+    }
+    swap(&arr[end],&arr[pIndex]);
+    return pIndex;
+}
+
+void swap(int *x,int *y)
+{
+    int temp2;
+    temp2= *x;
+    *x= *y;
+    *y=temp2;
+
+}
