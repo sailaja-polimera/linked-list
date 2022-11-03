@@ -16,6 +16,7 @@ struct node* delbeg(struct node *head)
     {
       struct node *temp=head;
      head=head->link;
+     free(temp);
     }
   return head;
 }
