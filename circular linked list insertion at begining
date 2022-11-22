@@ -1,0 +1,39 @@
+#include<stdio.h>  
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *link;
+};
+struct node* inserempty(int data)
+{
+    struct node *temp=malloc(sizeof(struct node));
+    temp->data=data;
+    temp->link=temp;
+    
+}
+struct node* inatbeg(struct node *tail,int data)
+{
+         struct node *temp=malloc(sizeof(struct node));
+         temp->data=data;
+         temp->link=tail->link;
+         tail->link=temp;
+         return tail;
+}
+int main()
+{
+     struct node *tail;
+     tail= inserempty(65);
+     tail= inatbeg(tail,55);
+     tail= inatbeg(tail,45);
+      tail= inatbeg(tail,35);
+    struct node *p=tail->link;
+    do
+    {
+        printf("%d ",p->data);
+        p=p->link;
+    }
+    while(p!=tail->link);
+  
+  
+}
