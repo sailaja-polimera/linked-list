@@ -1,0 +1,98 @@
+#include <stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node*link;
+};
+struct node *insertatbeg(struct node *head)
+{
+
+
+    struct node*ptr=malloc(sizeof(struct node));
+    ptr->data=8000;
+    ptr->link=head;
+    head=ptr;
+
+}
+struct node *sort(struct node *head)
+{
+
+    struct node*ptr,*ptr1;
+    int temp;
+    ptr=head;
+    while(ptr->link!=NULL)
+    {
+        ptr1=ptr->link;
+        while(ptr1!=NULL)
+        {
+            if(ptr->data>ptr1->data)
+            {
+                temp=ptr->data;
+                ptr->data=ptr1->data;
+                ptr1->data=temp;
+
+            }
+            ptr1=ptr1->link;
+        }
+          ptr=ptr->link;
+    }
+    return head;
+}
+
+int main()
+{
+    struct node *head=NULL;
+   struct node *p;
+
+    struct node*k1=(struct node*)malloc(sizeof(struct node));
+    k1->data=6000;
+    k1->link=NULL;
+   head=k1;
+
+
+    struct node *k2=(struct node*)malloc(sizeof(struct node));
+    k2->data=5000;
+    k1->link=k2;
+    k2->link=NULL;
+
+
+    struct node *k3=(struct node*)malloc(sizeof(struct node));
+    k3->data=4000;
+    k2->link=k3;
+    k3->link=NULL;
+
+    struct node *k4=(struct node*)malloc(sizeof(struct node));
+    k4->data=3000;
+    k3->link=k4;
+    k4->link=NULL;
+
+    p=head;
+     printf("before  sorting:");
+    while(p!=NULL)
+    {
+        printf("creating of nodes:%d\n",p->data);
+        p=p->link;
+    }
+
+    head=insertatbeg(head);
+    p=head;
+    printf("after inserting the node at beg the linked list is:");
+    while(p!=NULL)
+    {
+        printf("nodes:%d\n",p->data);
+        p=p->link;
+    }
+
+    p=head;
+    head=sort(head); 
+
+    printf("after soting:");
+    while(p!=NULL)
+    {
+        printf("nodes:%d\n",p->data);
+        p=p->link;
+    }
+
+
+}
