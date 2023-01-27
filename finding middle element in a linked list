@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *link;
+};
+struct node* insspe(struct node *head,int data,int pos)
+{
+      struct node *temp=head;
+     struct node *newnode= (struct node*) malloc(sizeof(struct node));
+    newnode->data = data;
+   newnode->link = NULL;
+   pos--;
+   while(pos!=1)
+    {
+      temp=temp->link;
+      pos--;
+    }
+    newnode->link=temp->link;
+    temp->link=newnode;
+  return head;
+}
+struct node* findmiddle(struct node *head)
+{
+    struct node *s,*f;
+    while(f!=NULL&&f->link!=NULL)
+    {
+        s=f=head;
+        f=f->link->link;
+        s=s->link;
+    }
+    printf("%d",s->data);
+}
+int main()
+{
+     int count=0;
+    struct node *head=NULL;
+      struct node *p;
+    struct node *ptr=malloc(sizeof(struct node));
+    ptr->data=20;
+    ptr->link=NULL;
+    head=ptr;
+    
+    struct node *ptr1=malloc(sizeof(struct node));
+    ptr1->data=30;
+   
+     ptr->link=ptr1;
+     ptr1->link=NULL;
+     
+    int data=40,pos=2;
+    head=insspe(head,data,pos);
+    p=head;
+   while(p!=NULL)
+    {
+  
+   printf("%d ",p->data);
+    p=p->link;
+}
+  head=findmiddle(head);
+    return 0;
+}
